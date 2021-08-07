@@ -3,14 +3,7 @@
 int main(int argc,char* argv[]) {
 
     if(argc == 1) {
-        /*cout << "No translation mode choosen to execute\n";
-        cout << "Those are the options available:\n"
-             << "-ATM \"alphabetical string\" (Alphabet to morse)\n"
-             << "-MTA \"morse string\" (Morse to alphabet)\n"
-             << "-ATMFILE \"filename\" (translate alphabet file to morse)\n"
-             << "-MTAFILE \"filename\" (translate morse file to alphabet)\n\n";*/
         No_arg_menu();
-
     }
     else if(argc == 2) {
         cout << "No string or file given to translate\n";
@@ -32,8 +25,7 @@ int main(int argc,char* argv[]) {
         else if(mode == "MTAFILE") {
             file_morse_to_letter(argv[2]);
         }
-        else {
-            
+        else {     
             cout << "Unknown argument given\n";
             cout << argv[1] << " " << argv[2];
         }

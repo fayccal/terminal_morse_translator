@@ -1,5 +1,6 @@
 #include "morse_box.hpp"
 
+/// A vector of pair which pair the alphabetical char and it's morse string.
 vector<pair<char, string>> morseTry = { 
         {'A', ".-"}, {'B', "-..."}, {'C', "-.-."}, {'D', "-.."}, {'E', "."}, {'F', "..-."}, 
         {'G', "--."}, {'H', "...."}, {'I', ".."}, {'J', ".---"}, {'K', "-.-"}, {'L', ".-.."},
@@ -14,11 +15,14 @@ vector<pair<char, string>> morseTry = {
         {';', "-.-.-."}, {'=', "-...-"}, {'+', ".-.-."}, {'-', "-....-"}, {'_', "..--.-"},
         {'"', ".-..-."}, {'$', "...-..-"}, {'@', ".--.-."}
 };
+
+/// A function to check if a file is in the directory.
 inline bool exists_test0 (const std::string& name) {
     ifstream f(name.c_str());
     return f.good();
 }
 
+/// Function to split a string with the given delimiter into vector of string.
 vector<string> split(const string &s, char delim) {
     vector<string> elems;
     stringstream ss(s);
@@ -29,6 +33,7 @@ vector<string> split(const string &s, char delim) {
     return elems;
 }
 
+/// A function which translate the morse content of a file into output.txt.
 void file_morse_to_letter(const std::string& fileName) {
 
     if(exists_test0(fileName) == false) {
@@ -37,7 +42,7 @@ void file_morse_to_letter(const std::string& fileName) {
     }
 
     string readingLine;
-    ifstream readFile("input.txt");
+    ifstream readFile(fileName);
     ofstream writeFile("output.txt");
 
     while(getline(readFile, readingLine)) {
@@ -73,7 +78,7 @@ void file_letter_to_morse(const std::string& fileName) {
     }
 
     string readingLine;
-    ifstream readFile("input.txt");
+    ifstream readFile(fileName);
     ofstream writeFile("output.txt");
 
     while(getline(readFile, readingLine)) {
