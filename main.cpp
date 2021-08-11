@@ -2,9 +2,11 @@
 
 int main(int argc,char* argv[]) {
 
+    //if no arg are given
     if(argc == 1) {
         No_arg_menu();
     }
+    //in case the arguments are on a unvalide number.
     else if(argc == 2) {
         cout << "No string or file given to translate\n";
     }

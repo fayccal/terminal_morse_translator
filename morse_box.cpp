@@ -49,15 +49,18 @@ void file_morse_to_letter(const std::string& fileName) {
         vector<string> splited = split(readingLine,' ');
 
         for(auto i : splited) {
+            //if the string is a empty string then a space is added.
             if(i == "") {
                 writeFile << " ";
                 continue;
             }
 
+            //searching for the morse string in the vector.
             auto it = find_if(morseTry.begin(), morseTry.end(), [&i](const pair<char, string> p) 
             {return p.second == i;});
 
-            if( it == morseTry.end()) {
+            //if it is not found in the vector, the replacement character is used.
+            if(it == morseTry.end()) {
                 writeFile << "�";
             }
             else {
@@ -70,6 +73,7 @@ void file_morse_to_letter(const std::string& fileName) {
     writeFile.close();
 }
 
+/// A function which translate the alphabetical content of a file into morse in output.txt.
 void file_letter_to_morse(const std::string& fileName) {
 
     if(exists_test0(fileName) == false) {
@@ -87,11 +91,13 @@ void file_letter_to_morse(const std::string& fileName) {
                 writeFile << " ";
                 continue;
             }
-        
+
+            //searching for the character in the vector.
             auto it = find_if(morseTry.begin(), morseTry.end(), [&c](const pair<char, string> p) 
             {return p.first == toupper(c);});
 
-            if( it == morseTry.end()) {
+            //if it is not found in the vector, the replacement character is used.
+            if(it == morseTry.end()) {
                 writeFile << "�";
             }
             else {
@@ -104,6 +110,7 @@ void file_letter_to_morse(const std::string& fileName) {
     writeFile.close();
 }
 
+/// Function to translate morse string to alphabetical string.
 string morse_to_letter(string morseString) {
     string fullMSG = "";
     vector<string> splited = split(morseString,' ');
@@ -114,9 +121,11 @@ string morse_to_letter(string morseString) {
             continue;
         }
 
+        //searching for the morse string in the vector.
         auto it = find_if(morseTry.begin(), morseTry.end(), [&i](const pair<char, string> p) 
         {return p.second == i;});
 
+        //if it is not found in the vector, the replacement character is used.
         if( it == morseTry.end()) {
             fullMSG += "�";
         }
@@ -128,6 +137,7 @@ string morse_to_letter(string morseString) {
     return fullMSG;
 }
 
+/// Function to translate alphabetical string to morse string.
 string letter_to_morse(string alphaString) {
 
     string fullMSG = "";
@@ -138,9 +148,11 @@ string letter_to_morse(string alphaString) {
             continue;
         }
         
+        //searching for the character in the vector.
         auto it = find_if(morseTry.begin(), morseTry.end(), [&c](const pair<char, string> p) 
         {return p.first == toupper(c);});
 
+        //if it is not found in the vector, the replacement character is used.
         if( it == morseTry.end()) {
             fullMSG += "�";
         }
@@ -152,6 +164,7 @@ string letter_to_morse(string alphaString) {
     return fullMSG;
 }
 
+/// The default function if no command line argument are given.
 void No_arg_menu() {
         string choice;
         string toTranslate;
@@ -191,5 +204,4 @@ void No_arg_menu() {
                 cout << "undifined\n\n";
             }
         }while(choice != "exit");
-
 }
